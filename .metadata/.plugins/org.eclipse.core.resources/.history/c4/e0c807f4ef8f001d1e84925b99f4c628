@@ -1,0 +1,39 @@
+package com.ezen.book.service;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+
+import com.ezen.book.domain.BookVO;
+import com.ezen.book.domain.PagingVO;
+import com.ezen.book.repository.BookDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+public class BookServiceImpl implements BookService {
+	
+	@Inject
+	private BookDAO bodao;
+	
+	
+	@Override
+	public List<BookVO> getList(PagingVO pvo,String book_title) {
+	log.info(">>> board Paging List check2");
+	log.info(book_title);
+	int pageStart=pvo.getPageStart();
+	int qty=pvo.getQty();
+	return bodao.selectBookListPaging(pvo,book_title);
+	}
+
+
+	@Override
+	public int getTotalCount(PagingVO pvo,String book_title) {
+	
+		return bodao.searchBookTotalCount(pvo,book_title);
+	}
+
+}

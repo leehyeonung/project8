@@ -1,0 +1,23 @@
+package com.ezen.book.repository;
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.beust.jcommander.Parameter;
+import com.ezen.book.domain.BookVO;
+import com.ezen.book.domain.PagingVO;
+
+@Repository
+public interface BookDAO {
+
+	List<BookVO> selectBookListPaging(PagingVO pvo, @Param("title") String book_title);
+
+	int searchBookTotalCount(PagingVO pvo, String book_title);
+
+
+
+
+
+
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.ezen.book.repository.BookDAO">
+	
+	<select id="selectBoardListPaging" resultType="com.ezen.book.domain.BookVO">
+			select*from book where book_num>0
+			
+			book_title like CONCAT('%', #{book_title}, '%')
+			
+			order by brd_num desc limit #{pageStart},#{qty}
+			
+			
+	</select>
+	
+	</mapper>
